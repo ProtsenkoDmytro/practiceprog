@@ -1,0 +1,28 @@
+#pragma warning(disable : 4996)
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int t1, t2, t3;
+
+    printf("Enter the time (in hours) required for the first guest to eat the cake: ");
+    scanf("%d", &t1);
+
+    printf("Enter the time (in hours) required for the second guest to eat the cake: ");
+    scanf("%d", &t2);
+
+    printf("Enter the time (in hours) required for the third guest to eat the cake: ");
+    scanf("%d", &t3);
+
+    if (t1 > 10000 || t2 > 10000 || t3 > 10000) {
+        printf("Error: Input value exceeds 10000.\n");
+        return 1; // Exit the program with an error code
+    }
+
+    float total_time = (float)(1.0 / t1) + (float)(1.0 / t2) + (float)(1.0 / t3);
+    float cake_eating_time = 1.0 / total_time;
+
+    printf("Total time the guests can eat the cake together: %.2f hours\n", cake_eating_time);
+
+    return 0;
+}
