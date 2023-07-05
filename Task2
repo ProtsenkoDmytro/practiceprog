@@ -1,0 +1,55 @@
+#pragma warning(disable : 4996)
+#include <stdio.h>
+
+// Функція для обчислення найменшого спільного кратного (НСК) двох чисел
+int lcm(int a, int b) {
+    return (a * b) / gcd(a, b);
+}
+
+
+// Функція для обчислення найбільшого спільного дільника (НСД) двох чисел
+int gcd(int a, int b) {
+    if (b == 0)
+        return a;
+    return gcd(b, a % b);
+}
+
+// Функція для обчислення НСК множини чисел
+int find_lcm(int numbers[], int n) {
+    int result = numbers[0];
+
+    for (int i = 1; i < n; i++) {
+        result = lcm(result, numbers[i]);
+    }
+
+    return result;
+}
+
+int main() {
+    int n;
+    int numbers[20];
+
+    printf("Enter the number of natural numbers (2 <= n <= 20): "); // Введення кількості чисел
+    scanf("%d", &n);
+
+    if (n < 2 || n > 20) { // Перевірка на правильність вводу даних
+        printf("Error: Invalid number of natural numbers. Must be between 2 and 20.\n");
+        return 1;
+    }
+
+    printf("Enter %d natural numbers separated by a space: ", n); // Введеня саме чисел
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &numbers[i]);
+
+        if (numbers[i] < 1) { // Якщо число менше 1, неможливо знайти НСК
+            printf("Error: Invalid natural number. Must be greater than or equal to 1.\n");
+            return 1;
+        }
+    }
+
+    int lcm_result = find_lcm(numbers, n); //Виклик функції
+
+    printf("Least Common Multiple: %d\n", lcm_result);// Виведення результату
+
+    return 0;
+}
