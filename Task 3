@@ -17,7 +17,7 @@ int main() {
     scanf("%d", &p);
     //Перевірка умови
     if (p > 30) {
-        printf("Wrong number\n");
+        printf("Error:Invalid number of digits\n");
         return 0;
     }
     //Отримання результату
