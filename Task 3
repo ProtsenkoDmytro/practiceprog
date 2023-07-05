@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <math.h>
+#pragma warning(disable : 4996)
+int quantity_numbers(int a) {
+    // При 1 розряді можливі лише 2 варіанти
+    if (a == 1)
+        return 2;
+    // При 2 розрядах можливі лише 4 варіанти
+    if (a == 2)
+        return 4;
+    // Обчислення кількості чисел із вказаним числом p розрядів
+    return quantity_numbers(a - 1) + quantity_numbers(a - 2);
+}
+int main() {
+    int p;
+    printf("Enter quantity of digits: ");// Введення кількості розрядів
+    scanf("%d", &p);
+    //Перевірка умови
+    if (p > 30) {
+        printf("Wrong number\n");
+        return 0;
+    }
+    //Отримання результату
+    printf("Number of p digit numbers where three identical digits are not next to each other:%d\n", quantity_numbers(p));
+    return 0;
+}
