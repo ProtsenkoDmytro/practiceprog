@@ -1,0 +1,30 @@
+#include <stdio.h>
+#pragma warning(disable : 4996)
+int countSequences(int n) {
+    int ab[n + 1];
+    // Базові значення
+    ab[0] = 1;
+    ab[1] = 2;
+    ab[2] = 4;
+    // Обчислення послідовностей
+    for (int i = 3; i <= n; i++) {
+        // Формула рекурентного співвідношення
+        ab[i] = (ab[i - 1] + ab[i - 2] + ab[i - 3]) % 12345;
+    }
+    return ab[n];
+}
+int main() {
+    int n, count;
+    // Введення даних
+    printf("Enter the length of the sequence n: ");
+    scanf("%d", &n);
+    // Перевірка на умову
+    if (n > 1 && n < 10000) {
+        // Виклик функції
+        count = countSequences(n);
+        // Виведення результату
+        printf("Number of sequences: %d\n", count);
+        return 0;
+    }
+    else printf("Error");
+}
