@@ -1,0 +1,31 @@
+#pragma warning(disable : 4996)
+#include <stdio.h>
+
+int counter(int n) { // Функція для обчислення кількості рівних дільників числа
+    int count = 0;
+    int m;
+
+    for (m = 1; m <= n; m++) {
+        if (n % m == n / m) {
+            count++;
+        }
+    }
+
+    return count;
+}
+
+int main() {
+    int n;
+    printf("Enter a natural number n: "); // Введення числа
+    scanf("%d", &n);
+
+    if (n < 1 || n > 150) {
+        printf("Error: Invalid number\n"); // Перевірка умови
+        return 1;
+    }
+
+    int result = counter(n); // Виведення результату
+    printf("Number of equal divisors of %d: %d\n", n, result);
+
+    return 0;
+}
