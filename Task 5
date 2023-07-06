@@ -1,6 +1,6 @@
 #include <stdio.h>
 #pragma warning(disable : 4996)
-int countSequences(int n) {
+int NumberSequences(int n) {
     int ab[n + 1];
     // Базові значення
     ab[0] = 1;
@@ -21,7 +21,7 @@ int main() {
     // Перевірка на умову
     if (n > 1 && n < 10000) {
         // Виклик функції
-        count = countSequences(n);
+        count = NumberSequences(n);
         // Виведення результату
         printf("Number of sequences: %d\n", count);
         return 0;
