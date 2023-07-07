@@ -1,0 +1,20 @@
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+	int x1, x2, y1, y2;
+	double result, dx,dy;
+	printf("Enter start coordinates: "); // Введення даних
+	scanf_s("%d %d", &x1, &y1);
+	printf("Enter end coordinates: ");
+	scanf_s("%d %d", &x2, &y2);
+	// Обчислення різниці координат по кожній осі, шляхом віднімання відповідних значень
+	dx = x2 - x1;
+	dy = y2 - y1;
+	// Обчислення суми квадратів різниць
+	double sumquad = dx*dx + dy*dy;
+	result = sqrt(sumquad); // Зведення у квадрат
+	printf("Vector lenght: %.6f\n", result); // Виведення результату
+	return 0;
+}
