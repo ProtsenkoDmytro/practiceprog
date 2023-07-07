@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <math.h>
+#pragma warning(disable:4996)
+
+int сircleInt(int x1, int y1, int r1, int x2, int y2, int r2) {
+    // Формула для відстані між центрами двох кіл
+    double distance = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+
+    // Якщо відстань між центрами більша за суму радіусів то перетинів не існує
+    if (distance > r1 + r2) {
+        return 0;
+    }// Якщо відстань між центрами дорівнює сумі радіусів то кола мають одну точку перетину
+    else if (distance == r1 + r2) {
+        return 1;
+    }
+    else {
+        // Якщо радіуси кіл перетинаються і одне коло всередині іншого то точок перетину не існує
+        if (distance < fabs(r1 - r2)) {
+            return 0;
+        }
+        else if (distance == fabs(r1 - r2)) {
+            // Якщо радіуси кіл перетинаються і дотикаються то кола мають безліч точок перетину
+            return -1;
+        }
+        else {
+            // В іншому випадку точок перетину є 2 або більше
+            return 2;
+        }
+    }
+}
+
+int main() {
+    int x1, y1, r1, x2, y2, r2;
+    // Введення координат центрів кіл та їх радіусів
+    printf("Enter the coordinates of the center of the first circle: ");
+    scanf("%d %d", &x1, &y1);
+
+    printf("Enter the radius of the first circle: ");
+    scanf("%d", &r1);
+
+    printf("Enter the coordinates of the center of the second circle: ");
+    scanf("%d %d", &x2, &y2);
+
+    printf("Enter the radius of the second circle: ");
+    scanf("%d", &r2);
+
+    // Виклик функції
+    int IntQuan = сircleInt(x1, y1, r1, x2, y2, r2);
+
+    // Виведення результату
+    if (IntQuan == -1) {
+        printf("The circles have infinitely many intersection points.\n");
+    }
+    else {
+        printf("Number of intersection points: %d\n", IntQuan);
+    }
+
+    return 0;
+}
