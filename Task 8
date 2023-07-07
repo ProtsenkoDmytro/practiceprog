@@ -1,0 +1,52 @@
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <string.h>
+
+// Функція для обчислення факторіалу для довжини слова
+int factorial(int n) {
+    if (n <= 1)
+        return 1;
+    else
+        return n * factorial(n - 1);
+}
+
+// Функція для визначення кількості анаграм
+int Anagrams(char word[]) {
+    int wordLeg = strlen(word);
+
+    // Масив для зберігання кількостей входжень кожної букви англійського алфавіту
+    int count[26] = { 0 };
+
+    // Обрахунок кількості входжень кожної букви
+    for (int i = 0; i < wordLeg; i++) {
+        count[word[i] - 'a']++;
+    }
+
+    // Обчислення добутку факторіалів кількостей входжень
+    int mult = 1;
+    for (int i = 0; i < 26; i++) {
+        if (count[i] > 1) {
+            mult *= factorial(count[i]);
+        }
+    }
+
+    // Формула для обчислення кількості анаграм
+    int allanagrams = factorial(wordLeg) / mult;
+
+    return allanagrams;
+}
+
+int main() {
+    char word[14];
+    // Отримання даних
+    printf("Enter a word: ");
+    scanf("%s", word);
+
+    // Виклик функції для кількості анаграм
+    int anagramCount = Anagrams(word);
+
+    // Виведення результату
+    printf("All anagrams for the entered word: %d\n", anagramCount);
+
+    return 0;
+}
